@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*======== BODY ========*/
+body{
+    background-image: url('image/landing_page.png');
+    background-size:cover;
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    font-family: 'Glyphicons Halflings';
+    src: local(''), url('Font/glyphicons-halflings-regular.woff') format('woff');
+} 
+
+/*======== BUTTON ========*/
+.landing{ /*class login-button*/
+    height: 100%;
+}
+
+.login-button{
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    border-color: white;
+    border-radius: 15px; 
+    background: transparent;
+    margin-top: 6vh;
+    width: 40vh;
+
+}
+
+.login-button:hover{
+    background-color: white;
+    color: grey;
+}
+
+/*======== TEXT ========*/
+.text{ /*class text (prologue)*/
+    height: 100%;
+}
+.prologue{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: center;    
+    margin-top: 50vh;
+
+}
+
+.line {
+    display: block;
+    width: 30%;
+    height: 1px;
+    background: #fff4e0;
+}
