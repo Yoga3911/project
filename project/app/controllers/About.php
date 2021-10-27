@@ -1,11 +1,16 @@
 <?php
-
-class About
+//Coba2
+class About extends Controller
 {
     //Default Method + Params
     public function index($nama = 'yoga')
     {
-        echo "Kosong $nama";
+        $data['nama'] = 'Pengko'; 
+        $data['status'] = 'Mahasiswa'; 
+        $data['judul'] = 'About';
+        $this->view('templates/header', $data);
+        $this->view('about/index', $data);
+        $this->view('templates/footer');
     }
     public function page()
     {

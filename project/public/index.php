@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
@@ -9,9 +9,9 @@
 <body>
     <script>location.assign('../app/views/landing_page/landing_page.php')</script>
 </body>
-</html>
-<?//php
+</html> -->
+<?php
 
-//require_once '../app/init.php';
-// Inisialisasi class App
-//$app = new App;
+require_once '../app/init.php';
+//Inisialisasi class App
+$app = new App;

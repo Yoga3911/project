@@ -14,9 +14,9 @@ class App
 
         //Controller
         //Cek apakah ada file dengan nama + url index 0 .php
-        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+        if (file_exists('../app/controllers/' . ucfirst($url[0]) . '.php')) {
             //Timpa default controller
-            $this->controller = $url[0];
+            $this->controller = ucfirst($url[0]);
             //Hapus index 0 pada array
             unset($url[0]);
         }
