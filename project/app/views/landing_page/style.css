@@ -5,7 +5,7 @@
 
 /*======== BODY ========*/
 body{
-    background-image: url('image/landing_page.png');
+    background-image: url('../../../public/images/landing_page.png');
     background-size:cover;
     background-position: center;
     height: 100vh;

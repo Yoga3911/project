@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <script>location.assign('view/landing_page.php')</script>
+    <script>location.assign('../app/views/landing_page/landing_page.php')</script>
 </body>
 </html>
+<?//php
 
+//require_once '../app/init.php';
+// Inisialisasi class App
+//$app = new App;

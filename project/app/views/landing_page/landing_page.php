@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../../public/css/bootstrap.css" rel="stylesheet">
 
     <!--GOOGLE FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,13 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
     <!--LINK CSS-->
-    <link rel="stylesheet" href="landing_page.css">
+    <link rel="stylesheet" href="style.css">
 
     <title>Landing Page</title>
   </head>
   <body>
     <!-- Gambar Bintang -->
-    <img src="image/star.png" alt="">
+    <img src="../../../public/images/star.png" alt="">
     <center>
         <div class="text d-flex justify-content-center"> 
             <p class="prologue">Handmade batik fabric sourced from various parts of Indonesia made into ourself designed batik clothing. <br>We hope you will adore them as mush as we do.</p>
@@ -36,7 +36,7 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../../../public/js/bootstrap.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
