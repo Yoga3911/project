@@ -1,4 +1,3 @@
-
     <!-- Gambar Bintang -->
     <img src=<?= $data['star']?> alt="">
     <center>
@@ -12,4 +11,3 @@
         </div>
     </div>
     </center>
-

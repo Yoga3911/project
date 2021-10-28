@@ -9,6 +9,7 @@ body{
     background-size:cover;
     background-position: center;
     height: 100vh;
+    overflow: hidden;
     background-repeat: no-repeat;
     font-family: 'Glyphicons Halflings';
     src: local(''), url('Font/glyphicons-halflings-regular.woff') format('woff');
