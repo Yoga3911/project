@@ -1,7 +1,7 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src=<?= $data['b_js']?> ></script>
+    <script src="<?= BASEURL ?>js/bootstrap/bootstrap.js" ></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -10,6 +10,6 @@
     -->
     <!-- JQEURY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src=<?= $data['js']?>></script>
+    <script src="<?= BASEURL . $data['js']?>"></script>
   </body>
 </html>

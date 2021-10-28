@@ -3,7 +3,7 @@
 class App
 {
     //Default URL
-    protected $controller = 'Home';
+    protected $controller = 'Landing';
     protected $method = 'index';
     protected $params = [];
 
@@ -13,8 +13,9 @@ class App
         $url = $this->parseURL();
 
         //Controller
-        //Cek apakah ada file dengan nama + url index 0 .php
+        //Cek apakah ada url kosong atau tidak
         if (!empty($url)) {
+            //Cek apakah ada file dengan nama + url index 0 .php
             if (file_exists('../app/controllers/' . ucfirst($url[0]) . '.php')) {
                 //Timpa default controller
                 $this->controller = ucfirst($url[0]);
@@ -45,13 +46,13 @@ class App
             }
 
         } else {
-            require_once '../app/controllers/Home.php';
+            require_once '../app/controllers/Landing.php';
             $this->controller = new $this->controller;
             $url[] = $this->controller;
             $url[] = $this->method;
             $url[] = $this->params;
         }
-        //Memanggil Class, Method, dan Parameter baru jika ada
+        //Memanggil Class, Method, dan Parameter
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
@@ -65,6 +66,7 @@ class App
             $url = filter_var($url, FILTER_SANITIZE_URL);
             //Jadikan URL sebagai array dengan delimiter /
             $url = explode('/', $url);
+            //Return URL dalam bentuk array
             return $url;
         }
     }

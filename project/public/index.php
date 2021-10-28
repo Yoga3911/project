@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <script>location.assign('../app/views/landing_page/index.php')</script>
+    <script>location.assign('../app/views/landing/index.php')</script>
 </body>
 </html> -->
 <?php
