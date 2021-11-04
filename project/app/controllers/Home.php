@@ -3,7 +3,7 @@
 class Home extends Controller {
     public function index() {
         $data['css'] = 'css/style/home/style2.css';
-        $data['js'] = 'js/script/jquery.js';
+        $data['js'] = 'js/script/jquery2.js';
         $data['judul'] = 'Home';
         $data['produk'] = $this->model('Produk')->getData();
         $this->view('templates/header', $data);
@@ -13,7 +13,7 @@ class Home extends Controller {
 
     public function detail($id) {
         $data['css'] = 'css/style/home/style2.css';
-        $data['js'] = 'js/script/jquery.js';
+        $data['js'] = 'js/script/jquery2.js';
         $data['judul'] = 'Detail';
         $data['produk'] = $this->model('Produk')->getDataById($id);
         $this->view('templates/header', $data);

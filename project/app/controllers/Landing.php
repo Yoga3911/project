@@ -7,7 +7,7 @@ class Landing extends Controller
     {
         $data['judul'] = 'Landing Page';
         $data['css'] = 'css/style/landing/style.css';
-        $data['js'] = 'js/script/jquery.js';
+        $data['js'] = 'js/script/jquery2.js';
         $this->view('templates/header', $data);
         $this->view('landing/index', $data);
         $this->view('templates/footer', $data);
