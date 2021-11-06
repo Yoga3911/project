@@ -1,8 +1,6 @@
-<?php
-// var_dump($data['user']);
-$username = $data['user']['username'];
+<?
 echo "<script>
-alert('Login Berhasil, Selamat Datang $username');
+alert('Login Berhasil, Selamat Datang');
 </script>";
 ?>
 <div class="d-flex flex-row-reverse">
