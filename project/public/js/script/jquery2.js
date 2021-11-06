@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $('body').css('opacity', 1)
     $('.sign-up').hide();
     $('#btn_2').click(function () {
         $('.sign-up').hide();

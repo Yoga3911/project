@@ -7,7 +7,7 @@
     <div class="line d-flex justify-content-center "></div>
     <div class="fluid-container d-flex justify-content-center">
         <div class="landing">
-            <a href="<?= BASEURL; ?>login"><button class="login-button">Click Me</button></a>
+            <a href="<?= BASEURL; ?>auth"><button class="login-button">Click Me</button></a>
         </div>
     </div>
 </center>

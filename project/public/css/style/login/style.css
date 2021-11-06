@@ -6,6 +6,8 @@
 
 body{
     overflow: hidden;
+    opacity: 0;
+    transition: 0.5s ease-in;
 }
     /*** ======= LOGIN FORM ======= ***/
     
@@ -15,14 +17,42 @@ body{
     color: rgb(168, 158, 158);
     text-align:center; /*for p*/
 }
-#input-email{ /*set box email*/
+#email_l{ /*set box email*/
     background-color: rgb(243, 243, 243);
     border: none;
     width: 80vh;
     height: 8vh;
 }
 
-#input-pass{  /*set box password*/
+#password_l{  /*set box password*/
+    background-color: rgb(243, 243, 243);
+    border: none;
+    width: 80vh;
+    height: 8vh;
+}
+
+#username_r{  /*set box password*/
+    background-color: rgb(243, 243, 243);
+    border: none;
+    width: 80vh;
+    height: 8vh;
+}
+
+#email_r{  /*set box password*/
+    background-color: rgb(243, 243, 243);
+    border: none;
+    width: 80vh;
+    height: 8vh;
+}
+
+#password_r{  /*set box password*/
+    background-color: rgb(243, 243, 243);
+    border: none;
+    width: 80vh;
+    height: 8vh;
+}
+
+#password2_r{  /*set box password*/
     background-color: rgb(243, 243, 243);
     border: none;
     width: 80vh;

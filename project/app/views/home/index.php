@@ -1,3 +1,15 @@
+<?php
+// var_dump($data['user']);
+$username = $data['user']['username'];
+echo "<script>
+alert('Login Berhasil, Selamat Datang $username');
+</script>";
+?>
+<div class="d-flex flex-row-reverse">
+  <form action="<?= BASEURL?>logout">
+    <button type="submit" class="btn btn-danger">Logout</button>
+  </form>
+</div>
 <table class="table table-dark table-striped">
   <thead>
     <tr>
@@ -6,13 +18,13 @@
     </tr>
   </thead>
   <tbody>
-      <?php foreach($data['produk'] as $produk) : ?>
-        <tr>
-          <td><?= $produk['nama_produk']; ?></td>
-          <td>
-              <a href="<?= BASEURL; ?>/home/detail/<?= intval($produk['id']); ?>" class="badge bg-primary">Click</a>
-          </td>
-        </tr>
-      <?php endforeach; ?>
+    <?php foreach ($data['produk'] as $produk) : ?>
+      <tr>
+        <td><?= $produk['nama_produk']; ?></td>
+        <td>
+          <a href="<?= BASEURL; ?>home/detail/<?= intval($produk['id']); ?>" class="badge bg-primary">Click</a>
+        </td>
+      </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>

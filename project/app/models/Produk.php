@@ -16,7 +16,8 @@ class Produk
         return $this->db->getAll();
     }
 
-    public function getDataById($id) {
+    public function getDataById($id)
+    {
         //Mencegah SQL Injection
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);

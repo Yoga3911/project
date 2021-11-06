@@ -23,3 +23,4 @@
     <title><?= $data['judul'] ?></title>
   </head>
   <body>
+    <div class="fluid-container">
