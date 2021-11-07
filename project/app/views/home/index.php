@@ -1,5 +1,4 @@
-<?
-echo "<script>
+<?= "<script>
 alert('Login Berhasil, Selamat Datang');
 </script>";
 ?>

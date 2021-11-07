@@ -10,7 +10,7 @@ class Auth extends Controller
 
     public function index()
     {
-        if ($_SESSION['login']) {
+        if (isset($_SESSION['login'])) {
             header('location: ' . BASEURL . 'home');
             exit;
         }
