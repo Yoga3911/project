@@ -4,6 +4,12 @@ class Home extends Controller
 {
     public function index()
     {
+        session_start();
+        if (!isset($_SESSION['login'])) {
+            header('location: ' . BASEURL . 'auth');
+            exit;
+        }
+
         $data['css'] = 'css/style/home/style2.css';
         $data['js'] = 'js/script/jquery2.js';
         $data['judul'] = 'Home';
