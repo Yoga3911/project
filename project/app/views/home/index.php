@@ -75,7 +75,7 @@ alert('Login Berhasil, Selamat Datang');
           </div>
           <div class="mb-3">
             <label for="gambar" class="form-label">Pilih gambar</label>
-            <input name="gambar" class="form-control" type="file" id="gambar" required>
+            <input name="gambar" class="form-control" type="file" id="gambar">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

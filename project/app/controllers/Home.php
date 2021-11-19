@@ -70,7 +70,8 @@ class Home extends Controller
         if (isset($_POST['tambahProduk']) && $result > 0) {
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('berhasil', 'diubah', 'success', '');
-        } else {
+        }
+        else {
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('gagal', 'diubah', 'danger', 'Unit dan Harga harus berupa angka');
         }
