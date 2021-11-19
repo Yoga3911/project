@@ -46,7 +46,7 @@ class User
         if ($data['password_r'] != $data['password2_r']) {
             return 'password';
         }
-        $query = "INSERT INTO user VALUES(0, :username, :email, :pass, 0, 0, '')";
+        $query = "INSERT INTO " . $this->table . " VALUES(0, :username, :email, :pass, 0, 0, '')";
         $this->db->query($query);
         $this->db->bind('username', htmlspecialchars($data['username_r']));
         $this->db->bind('email', htmlspecialchars($data['email_r']));

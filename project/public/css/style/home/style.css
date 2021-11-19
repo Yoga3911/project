@@ -1,0 +1,12 @@
+body {
+    background-color: tomato;
+}
+
+a {
+    text-decoration: none;
+}
+
+.badge:hover {
+    color: white;
+    opacity: 0.6;
+}

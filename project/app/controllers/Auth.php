@@ -15,7 +15,7 @@ class Auth extends Controller
         }
         $data['judul'] = 'Welcome';
         $data['css'] = 'css/style/login/style.css';
-        $data['js'] = 'js/script/jquery2.js';
+        $data['js'] = 'js/script/auth/jquery2.js';
         $this->view('templates/header', $data);
         $this->view('login_register/index', $data);
         $this->view('templates/footer', $data);
@@ -33,13 +33,16 @@ class Auth extends Controller
                     $_SESSION['login'] = true;
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['email'] = $user['email'];
+                    Flasher::setFlash($_SESSION['username'], '', 'success', '');
                     header('location: ' . BASEURL . 'home');
                     exit;
                 } else {
-                    setcookie('isPassword', true, time() + 3, '/');
+                    Flasher::setFlash('Password', 'salah', 'danger', '');
+                    setcookie('isPassword', true, time() + 1, '/');
                 }
             } else {
-                setcookie('isEmail', true, time() + 3, '/');
+                Flasher::setFlash('Email', 'tidak terdaftar', 'danger', '');
+                setcookie('isEmail', true, time() + 1, '/');
             }
             header('location: ' . BASEURL . 'auth');
             exit;
@@ -49,15 +52,15 @@ class Auth extends Controller
     public function register()
     {
         $result = $this->model('User')->insertData($_POST);
-        if ($result == 'password'){
+        if ($result == 'password') {
             echo "<script>
             window.alert('Password yang anda masukkan tidak sama');
             </script>";
-        } else if ($result == 'email'){
+        } else if ($result == 'email') {
             echo "<script>
             window.alert('Email sudah terdaftar, gunakan email lain');
             </script>";
-        } else if ($result == 'username'){
+        } else if ($result == 'username') {
             echo "<script>
             window.alert('Username sudah terdaftar, gunakan username lain');
             </script>";
