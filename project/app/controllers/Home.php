@@ -9,8 +9,7 @@ class Home extends Controller
 
     public function index()
     {
-        session_start();
-        if (!isset($_SESSION['login'])) {
+        if (!isset($_SESSION['username']) && isset($_SESSION['login'])) {
             header('location: ' . BASEURL . 'auth');
             exit;
         }
@@ -39,7 +38,7 @@ class Home extends Controller
     public function hapus($id)
     {
         $this->model('Produk')->deleteProduct($id);
-        setcookie('produk', true, time()+1, '/');
+        setcookie('produk', true, time() + 1, '/');
         Flasher::setFlash('berhasil', 'dihapus', 'danger', '');
         header('location: ' . BASEURL . 'home');
         exit;
@@ -51,9 +50,11 @@ class Home extends Controller
         if (isset($_POST['tambahProduk']) && $result > 0) {
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('berhasil', 'ditambahkan', 'success', '');
-        } else {
+        } else if ($result == 'error') {
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Unit dan Harga harus berupa angka');
+        } else {
+            setcookie('produk', true, time() + 1, '/');
         }
         header('location: ' . BASEURL . 'home');
         exit;
@@ -67,11 +68,14 @@ class Home extends Controller
     public function ubah()
     {
         $result = $this->model('Produk')->ubahProduct($_POST);
-        if (isset($_POST['tambahProduk']) && $result > 0) {
+        if ($result == 'none') {
+            setcookie('produk', true, time() + 1, '/');
+            Flasher::setFlash('tidak ada', 'perubahan', 'warning', '');
+            // var_dump('dsa'); die;
+        } else if (isset($_POST['tambahProduk']) && $result > 0) {
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('berhasil', 'diubah', 'success', '');
-        }
-        else {
+        } else {
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('gagal', 'diubah', 'danger', 'Unit dan Harga harus berupa angka');
         }

@@ -26,7 +26,7 @@ alert('Login Berhasil, Selamat Datang');
         <td><?= $produk['nama_produk']; ?></td>
         <td>
           <a href="<?= BASEURL; ?>home/detail/<?= intval($produk['id']); ?>" class="badge bg-primary">Detail</a>
-          <a href="<?= BASEURL; ?>home/ubah" class="badge bg-success modalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $produk['id']?>">Ubah</a>
+          <a href="<?= BASEURL; ?>home/ubah" class="badge bg-success modalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $produk['id'] ?>">Ubah</a>
           <a href="<?= BASEURL; ?>home/hapus/<?= intval($produk['id']); ?>" class="badge bg-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</a>
         </td>
       </tr>
@@ -44,7 +44,9 @@ alert('Login Berhasil, Selamat Datang');
       </div>
       <div class="modal-body">
         <form method="POST" action="<?= BASEURL; ?>home/addData" enctype="multipart/form-data">
-        <input type="hidden" id="id" name="id">
+          <input type="hidden" id="id" name="id">
+          <!-- <//?php Flasher::setFlash('mantap', 'asd', 'danger', '') ?> -->
+          <?php Flasher::flashProduct() ?>
           <div class="row">
             <div class="col">
               <label for="produk" class="form-label">Nama Produk</label>

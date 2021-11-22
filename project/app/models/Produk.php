@@ -28,6 +28,9 @@ class Produk
     public function addProduct($data)
     {
         $gambar = $this->upload();
+        if (!$gambar) {
+            return false;
+        }
         try {
             $query = "INSERT INTO " . $this->table . " VALUES(0, :produk, :unit, :harga, :jenis, :deskripsi, :gambar)";
             $this->db->query($query);
@@ -49,6 +52,26 @@ class Produk
     //Tambah product
     public function ubahProduct($data)
     {
+        $gambar = $this->upload();
+        $hasil = $this->getDataById($data['id']);
+        $tmp = [];
+        foreach ($hasil as $h) {
+            $tmp[] = $h;
+        }
+
+        $count = 0;
+        foreach ($data as $d) {
+            if (in_array($d, $tmp)) {
+                $count += 1;
+            }
+        }
+        // var_dump($data['gambar']);
+        // die;
+
+        if ($gambar == '') {
+            $data['gambar'] = $hasil['image'];
+        }
+
         try {
             $query = "UPDATE " . $this->table . " SET 
             nama_produk = :produk, 
@@ -66,12 +89,20 @@ class Produk
             $this->db->bind('harga', htmlspecialchars($data['harga']));
             $this->db->bind('jenis', htmlspecialchars($data['jenis']));
             $this->db->bind('deskripsi', htmlspecialchars($data['deskripsi']));
-            $this->db->bind('gambar', htmlspecialchars($data['gambar']));
+            $this->db->bind('gambar', htmlspecialchars($gambar));
             $this->db->execute();
         } catch (Exception $e) {
-            return false;
+            return 'error';
         }
 
+        if (strlen($gambar) > 10) {
+            return 1;
+        }
+
+        if ($count > 6) {
+            // var_dump('dsa'); die;
+            return 'none';
+        }
         // var_dump($query); die;
         return $this->db->rowCount();
     }
@@ -95,24 +126,20 @@ class Produk
         $split = explode('.', $nama);
         $ekstensi = strtolower(end($split));
         $format = ['jpg', 'jpeg', 'png'];
-        // cek format file
-        if (!in_array($ekstensi, $format)) {
-            echo "<script>
-            alert('Format file tidak sesuai');
-        </script>";
-            return false;
-        };
         // cek jika blm upload foto
         if ($error === 4) {
-            echo "<script>
-            alert('Gambar tidak boleh kosong');
-        </script>";
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Gambar belum diupload');
+            return false;
         }
+        // cek format file
+        if (!in_array($ekstensi, $format)) {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Format file tidak sesuai');
+            return false;
+        };
         // cek ukuran file <= 1mb
-        if ($size > 10000000) {
-            echo "<script>
-            alert('Ukuran gambar terlalu besar');
-        </script>";
+        if ($size > 3000000) {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Ukuran file terlalu besar');
+            return false;
         }
         $uniq = uniqid();
         $nama_baru = $uniq . '.' . $ekstensi;

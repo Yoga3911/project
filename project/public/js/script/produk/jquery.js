@@ -6,11 +6,11 @@ $(document).ready(function () {
         $('#produk').val('');
         $('#unit').val('');
         $('#harga').val('');
-        $('.pilihJenis').val('');
+        $('.pilihJenis').val(1);
         $('#deskripsi').val('');
     })
-
     $('.modalUbah').click(function () {
+        // console.log($('#unit').val());
         $('#formModalLabel').html('Ubah Data Produk');
         $('.modal-footer button[type=submit]').html('Ubah');
         $('.modal-body form').attr('action', 'http://localhost/mvc/project/public/home/ubah')
@@ -30,7 +30,7 @@ $(document).ready(function () {
                 $('.pilihJenis').val(data.jenis);
                 $('#deskripsi').val(data.deskripsi);
                 // $('#gambar').val(data.image);
-                console.log(data.jenis);
+                // console.log(data.jenis);
             }
         })
 

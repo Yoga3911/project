@@ -32,11 +32,19 @@ class User
         return $this->db->getOne();
     }
 
+    public function getDataByUsername($username)
+    {
+        // Mencegah sql injection
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username=:username');
+        $this->db->bind('username', $username);
+        return $this->db->getOne();
+    }
+
     // Register
     public function insertData($data)
     {
         $result = $this->getData();
-        foreach($result as $i) {
+        foreach ($result as $i) {
             if ($data['username_r'] == $i['username']) {
                 return 'username';
             } else if ($data['email_r'] == $i['email']) {
@@ -54,5 +62,18 @@ class User
 
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function ubahPassword($data)
+    {
+        if ($data['password_c'] != $data['password2_c']) {
+            return false;
+        }
+        $query = "UPDATE " . $this->table . " SET password = :password WHERE email = :email";
+        $this->db->query($query);
+        $this->db->bind('password', $data['password_c']);
+        $this->db->bind('email', $data['email_c']);
+        $this->db->execute();
+        return true;
     }
 }

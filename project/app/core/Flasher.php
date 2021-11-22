@@ -44,4 +44,15 @@ class Flasher
         };
         unset($_SESSION['flash']);
     }
+
+    public static function flashForgot()
+    {
+        if (isset($_SESSION['flash'])) {
+            echo '<div class="alert alert-' . $_SESSION['flash']['tipe'] . ' alert-dismissible fade show" role="alert">
+            ' . $_SESSION['flash']['pesan'] . ' dengan email <strong> ' . $_SESSION['flash']['aksi'] . ' </strong> ' . $_SESSION['flash']['err'] . '
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+        };
+        unset($_SESSION['flash']);
+    }
 }

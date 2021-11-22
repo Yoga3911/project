@@ -29,26 +29,35 @@
             <div class="col-md-8">
                 <?php Flasher::flashAuth() ?>
             </div>
+        <?php elseif (isset($_COOKIE['ubahPassword'])) : ?>
+            <div class="col-md-8">
+                <?php Flasher::flashForgot() ?>
+            </div>
         <?php endif ?>
-        <form action="<?= BASEURL; ?>auth/login" method="POST">
+        <form action="<?= BASEURL; ?>auth/login" method="POST" class="cont" style="width: 68%;">
             <div class="email mb-3">
                 <!--EMAIL-->
-                <center>
-                    <label for="email_l" class="form-label"></label>
-                    <input name="email_l" required name="email_l" type="email" class="form-control" placeholder="Email" id="email_l" aria-describedby="emailHelp">
-                </center>
+                <!-- <center> -->
+                <label for="email_l" class="form-label"></label>
+                <input name="email_l" required name="email_l" type="email" class="form-control" placeholder="Email" id="email_l" aria-describedby="emailHelp">
+                <!-- </center> -->
             </div>
 
             <div class="password mb-3">
                 <!--PASSWORD-->
-                <center>
-                    <label for="password_l" class="form-label"></label>
-                    <input name="password_l" required name="password_l" type="password" class="form-control" placeholder="Password" id="password_l">
-                </center>
+                <label for="password_l" class="form-label"></label>
+                <input name="password_l" required name="password_l" type="password" class="form-control" placeholder="Password" id="password_l">
             </div>
-
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" name="check" value="true">
+                    <label class="form-check-label" for="gridCheck">
+                        Remember me
+                    </label>
+                </div>
+            </div>
             <center>
-                <p class='forgot'> Forgot your password?</p>
+                <a class='forgot' data-bs-toggle="modal" data-bs-target="#formModalPassword"> Forgot your password?</a>
                 <div class="about-border"></div>
                 <!--divider (line pemisah)-->
                 <button name="signin" type="submit" class="submit-button">SIGN IN</button>
@@ -114,6 +123,9 @@
                 <center>
                     <label for="password_r" class="form-label"></label>
                     <input required name="password_r" type="password" class="form-control" placeholder="Password" id="password_r">
+                    <div class="level mt-3">
+                        <span id="StrengthDisp" class="badge displayBadge">Weak</span>
+                    </div>
                 </center>
             </div>
 
@@ -135,3 +147,38 @@
     <!--END OF COL 1-->
 </div>
 <!--END OF ROW-->
+
+<!-- Modal -->
+<div class="modal fade" id="formModalPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Buat Password Baru</h5>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<?= BASEURL; ?>auth/cekData">
+                    <div class="row">
+                        <div class="col">
+                            <label for="username_c" class="form-label">Username</label>
+                            <input name="username_c" type="text" class="form-control" id="username_c" required>
+                        </div>
+                        <div class="col">
+                            <label for="email_c" class="form-label">Email</label>
+                            <input name="email_c" type="text" class="form-control" id="email_c" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="password_c" class="form-label">Password baru</label>
+                        <input name="password_c" type="password" class="form-control" id="password_c" required>
+                        <label for="password2_c" class="form-label">Konfirmasi password</label>
+                        <input name="password2_c" type="password" class="form-control" id="password2_c" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary" id="btnUbah" name="ubahPassword" data-id="<?= $produk['id'] ?>">Ubah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
