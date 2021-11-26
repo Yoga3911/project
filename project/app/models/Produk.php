@@ -24,6 +24,7 @@ class Produk
         return $this->db->getOne();
     }
 
+
     //Tambah product
     public function addProduct($data)
     {
@@ -32,7 +33,7 @@ class Produk
             return false;
         }
         try {
-            $query = "INSERT INTO " . $this->table . " VALUES(0, :produk, :unit, :harga, :jenis, :deskripsi, :gambar)";
+            $query = "INSERT INTO " . $this->table . " VALUES(0, :produk, :unit, :harga, :jenis, :deskripsi, :gambar, :user_id)";
             $this->db->query($query);
             $this->db->bind('produk', htmlspecialchars($data['produk']));
             $this->db->bind('unit', htmlspecialchars($data['unit']));
@@ -40,6 +41,7 @@ class Produk
             $this->db->bind('jenis', htmlspecialchars($data['jenis']));
             $this->db->bind('deskripsi', htmlspecialchars($data['deskripsi']));
             $this->db->bind('gambar', htmlspecialchars($gambar));
+            $this->db->bind('user_id', htmlspecialchars($_SESSION['id']));
             $this->db->execute();
         } catch (Exception $e) {
             return false;
@@ -65,8 +67,6 @@ class Produk
                 $count += 1;
             }
         }
-        // var_dump($data['gambar']);
-        // die;
 
         if ($gambar == '') {
             $data['gambar'] = $hasil['image'];
@@ -100,10 +100,8 @@ class Produk
         }
 
         if ($count > 6) {
-            // var_dump('dsa'); die;
             return 'none';
         }
-        // var_dump($query); die;
         return $this->db->rowCount();
     }
 
@@ -133,7 +131,7 @@ class Produk
         }
         // cek format file
         if (!in_array($ekstensi, $format)) {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Format file tidak sesuai');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Format gambar tidak sesuai');
             return false;
         };
         // cek ukuran file <= 1mb
@@ -150,5 +148,14 @@ class Produk
         //     echo "Not uploaded because of error #".$_FILES["gambar"]["error"]; die;
         //   }
         return $nama_baru;
+    }
+
+    public function updateKeranjang($id, $unit)
+    {
+        $query = "UPDATE " . $this->table . " SET unit = :unit WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', htmlspecialchars($id));
+        $this->db->bind('unit', htmlspecialchars($unit));
+        $this->db->execute();
     }
 }

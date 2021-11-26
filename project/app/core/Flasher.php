@@ -27,7 +27,7 @@ class Flasher
     {
         if (isset($_SESSION['flash'])) {
             echo '<div class="alert alert-' . $_SESSION['flash']['tipe'] . ' alert-dismissible fade show" role="alert">
-            Hai <strong> ' . $_SESSION['flash']['pesan'] . ' </strong> Selamat Datang di Website kami !
+            Hai <strong> ' . $_SESSION['flash']['pesan'] . ' </strong> Selamat Datang di Website kami!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
         };
@@ -38,7 +38,7 @@ class Flasher
     {
         if (isset($_SESSION['flash'])) {
             echo '<div class="alert alert-' . $_SESSION['flash']['tipe'] . ' alert-dismissible fade show" role="alert">
-            Produk <strong> ' . $_SESSION['flash']['pesan'] . ' </strong> ' . $_SESSION['flash']['aksi'] . ' ! ' . $_SESSION['flash']['err'] . '
+            Produk <strong> ' . $_SESSION['flash']['pesan'] . ' </strong> ' . $_SESSION['flash']['aksi'] . '! ' . $_SESSION['flash']['err'] . '
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
         };

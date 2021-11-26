@@ -5,7 +5,6 @@
             <h6 class="card-subtitle mb-2 text-muted"><?= $data['produk']['unit']; ?></h6>
             <p class="card-text"><?= $data['produk']['harga']; ?></p>
             <p class="card-text"><?= $data['produk']['jenis']; ?></p>
-            <!-- <a href="<//?= BASEURL; ?>home/" class="card-link">Kembali</a> -->
         </div>
     </div>
 </center>

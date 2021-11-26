@@ -15,7 +15,7 @@ class Home extends Controller
         }
 
         $data['css'] = 'css/style/home/style.css';
-        $data['js'] = 'js/script/produk/jquery.js';
+        $data['js'] = 'js/script/produk/jquery2.js';
         $data['judul'] = 'Home';
         $data['produk'] = $this->model('Produk')->getData();
         // $data['user'] = $this->model('User')->getDataByEmail($email);
@@ -27,7 +27,7 @@ class Home extends Controller
     public function detail($id)
     {
         $data['css'] = 'css/style/home/style.css';
-        $data['js'] = 'js/script/produk/jquery.js';
+        $data['js'] = 'js/script/produk/jquery2.js';
         $data['judul'] = 'Detail';
         $data['produk'] = $this->model('Produk')->getDataById($id);
         $this->view('templates/header', $data);
@@ -37,6 +37,8 @@ class Home extends Controller
 
     public function hapus($id)
     {
+        $result = $this->model('Produk')->getDataById($id);
+        unlink('images/' . $result['image']);
         $this->model('Produk')->deleteProduct($id);
         setcookie('produk', true, time() + 1, '/');
         Flasher::setFlash('berhasil', 'dihapus', 'danger', '');
@@ -79,6 +81,20 @@ class Home extends Controller
             setcookie('produk', true, time() + 1, '/');
             Flasher::setFlash('gagal', 'diubah', 'danger', 'Unit dan Harga harus berupa angka');
         }
+        header('location: ' . BASEURL . 'home');
+        exit;
+    }
+
+    public function addKeranjang()
+    {
+        $result = $this->model('Produk')->getDataById($_POST['id1']);
+        $this->model('Produk')->updateKeranjang($_POST['id1'], intval($result['unit']) - $_POST['count']);
+        // if (intval($result['unit']) - $_POST['count'] == 0) {
+        //     $result = $this->model('Produk')->getDataById($_POST['id1']);
+        //     unlink('images/' . $result['image']);
+        //     $this->model('Produk')->deleteProduct($_POST['id1']);
+        // }
+        $this->model('Cart')->addData($_POST['id1'], $_POST['qty']);
         header('location: ' . BASEURL . 'home');
         exit;
     }

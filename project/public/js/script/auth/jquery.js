@@ -43,8 +43,8 @@ $(document).ready(function () {
 
     // The strong and weak password Regex pattern checker
 
-    let strongPassword = new RegExp('(?=.*[A-Z])(?=.*[0-9])(?=.{10,})')
-    let strongPassword2 = new RegExp('(?=.*[a-z])(?=.*[0-9])(?=.{10,})')
+    let strongPassword = new RegExp('(?=.*[A-Z])(?=.*[0-9])(?=.{12,})')
+    let strongPassword2 = new RegExp('(?=.*[a-z])(?=.*[0-9])(?=.{12,})')
     let mediumPassword = new RegExp('(?=.*[a-z])(?=.*[0-9])(?=.{6,})')
     let mediumPassword2 = new RegExp('(?=.*[A-Z])(?=.*[0-9])(?=.{6,})')
     function StrengthChecker(PasswordParameter) {

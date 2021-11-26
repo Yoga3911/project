@@ -15,7 +15,7 @@ class Auth extends Controller
         }
         $data['judul'] = 'Welcome';
         $data['css'] = 'css/style/login/style3.css';
-        $data['js'] = 'js/script/auth/jquery1.js';
+        $data['js'] = 'js/script/auth/jquery.js';
         $this->view('templates/header', $data);
         $this->view('login_register/index', $data);
         $this->view('templates/footer', $data);
@@ -33,6 +33,7 @@ class Auth extends Controller
                     if (isset($_POST['check'])) {
                         $_SESSION['login'] = true;
                     }
+                    $_SESSION['id'] = $user['id'];
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['email'] = $user['email'];
                     Flasher::setFlash($_SESSION['username'], '', 'success', '');

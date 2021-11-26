@@ -10,3 +10,25 @@ a {
     color: white;
     opacity: 0.6;
 }
+
+.gambarProduk {
+    width: 200px;
+    height: 200px;
+}
+
+.op {
+    width: 8%;
+}
+
+.minmax {
+    width: 12%;
+}
+
+.qty {
+    cursor: default;
+    outline: none; 
+    border: 0;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
